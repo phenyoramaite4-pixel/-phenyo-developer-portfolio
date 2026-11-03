@@ -61,30 +61,34 @@ const projects = [
     title: "Developer Portfolio",
     category: "Personal Project",
     description:
-      "My personal developer portfolio, designed to showcase my skills, completed projects, prototypes and ongoing development journey.",
-    status: "In Development",
-    statusClass: "development",
-    tech: ["React", "Vite", "Framer Motion"],
+      "My live personal developer portfolio, showcasing my technical skills, completed projects, prototypes and ongoing development journey.",
+    status: "Live",
+    statusClass: "live",
+    tech: ["React", "Vite", "JavaScript", "CSS", "Framer Motion", "Lucide React"],
     icon: Code2,
-    link: "",
-    action: "Currently being developed",
+    link: "https://phenyo-developer-portfolio-q8wl6xl4m-phenyoramaite4-9922.vercel.app/",
+    action: "View Live Demo",
     overview:
-      "My personal portfolio website, bringing together my development projects, technical skills, professional information and contact details.",
+      "My personal developer portfolio, designed and developed to bring together my projects, technical skills, professional information and contact details in one interactive website. The portfolio is deployed on Vercel and its source code is maintained on GitHub.",
     problem:
-      "Developers need a central place to present their work so that recruiters, clients and business partners can explore their capabilities.",
+      "Developers need a central place to present their work so that recruiters, clients and business partners can explore their capabilities and access their projects.",
     features: [
       "Interactive project showcase",
       "Detailed project information",
+      "Direct links to live projects",
       "Technical skills presentation",
       "Professional references section",
       "Direct contact links",
       "Responsive portfolio layout",
+      "Animated user interface",
+      "GitHub source code management",
+      "Vercel deployment",
     ],
     contribution:
-      "Designed and developed the portfolio interface and its interactive features, including the project showcase and project-details experience.",
-    role: "Personal project — design and frontend development",
+      "Designed and developed the portfolio interface, project showcase, interactive project-details experience, navigation, animations and responsive layouts. Set up Git version control, published the source code to GitHub and deployed the website using Vercel.",
+    role: "Personal project — design, frontend development and deployment",
     limitations:
-      "This portfolio is still being developed. Its features and project content may continue to change.",
+      "This is a personal portfolio that will continue to evolve as I complete new projects and develop additional technical skills.",
   },
   {
     number: "03",
@@ -173,6 +177,7 @@ const skillGroups = [
       "Codex",
       "Netlify",
       "Render",
+      "Vercel",
     ],
   },
   {
@@ -204,6 +209,8 @@ function App() {
   };
 
   const closeProject = () => setSelectedProject(null);
+
+  const SelectedProjectIcon = selectedProject?.icon;
 
   return (
     <div className="portfolio">
@@ -857,7 +864,7 @@ function App() {
 
       {/* PROJECT DETAILS MODAL */}
       <AnimatePresence>
-        {selectedProject && (
+        {selectedProject && SelectedProjectIcon && (
           <motion.div
             className="project-modal-backdrop"
             initial={{ opacity: 0 }}
@@ -916,7 +923,7 @@ function App() {
                   </div>
 
                   <div className="project-modal-icon">
-                    <selectedProject.icon size={30} />
+                    <SelectedProjectIcon size={30} />
                   </div>
                 </div>
 
@@ -932,7 +939,7 @@ function App() {
                     </div>
 
                     <div className="modal-preview-content">
-                      <selectedProject.icon size={42} />
+                      <SelectedProjectIcon size={42} />
                       <strong>{selectedProject.title}</strong>
                       <span>{selectedProject.category}</span>
                       <p>Project showcase · {selectedProject.number}</p>

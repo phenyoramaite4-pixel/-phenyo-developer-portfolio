@@ -95,15 +95,23 @@ const projects = [
     title: "Learner Attendance & Leave Management System",
     category: "Management System",
     description:
-      "A live frontend demonstration of a learner management system featuring attendance registers, leave applications, learner records, calendars, analytics, notifications and printable reports. The current version uses fictional demonstration records and does not provide live backend authentication or persistent record storage.",
-    status: "Live Demo",
+      "A responsive learner management dashboard featuring attendance registers, leave applications, learner records, calendars, analytics, notifications, printable reports and a mobile-friendly slide-out hamburger navigation menu. The current version uses fictional demonstration records and does not provide live backend authentication or persistent record storage.",
+    status: "Live",
     statusClass: "live",
-    tech: ["HTML", "CSS", "Static Frontend", "Dashboard"],
+    tech: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Dashboard",
+    ],
     icon: Monitor,
     link: "https://learner-attendance-leave-management-s.netlify.app/",
+    github:
+      "https://github.com/phenyoramaite4-pixel/learner-attendance-leave-management-system",
     action: "View Live Demo",
     overview:
-      "A frontend demonstration of a learner administration system designed to bring attendance, leave management, learner information and reporting into one organised interface.",
+      "A responsive frontend demonstration of a learner administration system designed to bring attendance, leave management, learner information and reporting into one organised interface. The dashboard includes a mobile slide-out navigation menu for easier use on smaller screens.",
     problem:
       "Managing learner attendance, leave applications and administrative records across separate processes can make it difficult to maintain an organised overview of learner activity.",
     features: [
@@ -116,10 +124,13 @@ const projects = [
       "Intervention tracking",
       "Activities and notifications",
       "Printable attendance registers and reports",
+      "Responsive mobile dashboard layout",
+      "Mobile hamburger navigation with slide-out sidebar",
+      "Menu closes using the close button, overlay or navigation links",
     ],
     contribution:
-      "Designed and developed the frontend pages, dashboard layout, navigation, management interfaces and visual presentation of the system.",
-    role: "Frontend development and interface design",
+      "Designed and developed the frontend pages, dashboard layout, navigation, management interfaces and visual presentation of the system. Implemented and tested the responsive mobile hamburger menu, then published the updated version through GitHub and Netlify.",
+    role: "Frontend development, responsive interface design and deployment",
     limitations:
       "This is a static frontend demonstration using fictional records. It does not provide live backend authentication or persistent record storage. Do not use it to manage real learner information.",
   },
@@ -543,15 +554,29 @@ function App() {
                     </button>
 
                     {hasLink ? (
-                      <a
-                        className="project-link"
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {project.action}
-                        <ArrowUpRight size={16} />
-                      </a>
+                      <>
+                        <a
+                          className="project-link"
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {project.action}
+                          <ArrowUpRight size={16} />
+                        </a>
+
+                        {project.github && (
+                          <a
+                            className="project-link"
+                            href={project.github}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            View GitHub Repository
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </>
                     ) : (
                       <span className="project-link unavailable">
                         {project.action}
@@ -1024,6 +1049,18 @@ function App() {
                     <span className="project-link unavailable">
                       {selectedProject.action}
                     </span>
+                  )}
+
+                  {selectedProject.github && (
+                    <a
+                      className="button-secondary"
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View GitHub Repository
+                      <ExternalLink size={17} />
+                    </a>
                   )}
 
                   <button
